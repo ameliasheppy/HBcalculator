@@ -1,7 +1,7 @@
 """CLI application for a prefix-notation calculator."""
 
 from arithmetic import (add, subtract, multiply, divide,
-                        square, cube, power, mod, )
+                        square, cube, power, mod, three_nums,        cubies)
 
 
 # Replace this with your code
@@ -20,6 +20,9 @@ while True:
         print("Exit")
         break
     # break with exit the while loop since the user is done
+    elif "quit" in tokens:
+        print("Exit")
+        break
 
     elif len(tokens) < 2:
         print("That is not enough information")
@@ -35,6 +38,11 @@ while True:
 
     else:
         num2 = int(tokens[2])
+
+    if len(tokens) <= 3:
+        num3 = None
+    else:
+        num3 = int(tokens[3])
 
     result = None
 
@@ -66,7 +74,13 @@ while True:
 
     elif operator == "mod":
         result = mod(float(num1), float(num2))
+
+    elif operator == "three_nums":
+        result = three_nums(float(num1), float(num2), float(num3))
+
+    elif operator == "cubies":
+        result = cubies(float(num1), float(num2))
+
     else:
         result = "Please enter correct inputs"
-
     print(result)
